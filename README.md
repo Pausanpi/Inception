@@ -75,3 +75,4 @@ Nginx is a webserver which stores html, js, images files and use http request to
 1. I added to my /var/www/ directory an index html file
 2. I configured the default file in etc/nginx/site-enable-default
 3. I added a server bracket with a location to var/www in the doc. Save it and reload nginx with 'nginx 's reload'
+4. Because the port host I put when I built was 7000. Go to a web page and put: http://localhost:7000/. it works!!!
