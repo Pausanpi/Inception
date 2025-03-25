@@ -78,6 +78,25 @@ Nginx is a webserver which stores html, js, images files and use http request to
 4. Because the port host I put when I built was 7000. Go to a web page and put: http://localhost:7000/. it works!!!
 
 
+>[!NOTE]
+>Lo que hice para tener la pagina web:
+>
+>```c
+>docker pull nginx
+>```
+>
+>```c
+>docker run -t -d -p 8080:80 --name nginx_test nginx
+>```
+>
+>```c
+>docker ps
+>``` 
+>
+>```c
+>docker start nginx_test
+>```
+
 ## How to change your localhost by pausanch.42.fr
 1. Go to the file /etc/hosts
 2. Add the following line: "127.0.0.1 pausanch.42.fr"
