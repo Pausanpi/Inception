@@ -79,7 +79,7 @@ Nginx is a webserver which stores html, js, images files and use http request to
 
 
 >[!NOTE]
->Lo que hice para tener la pagina web:
+>What I did to get the web page: (This is a test, it is not useful for anything :))
 >
 >```c
 >docker pull nginx
