@@ -89,6 +89,12 @@ Nginx is a webserver which stores html, js, images files and use http request to
 >docker run -t -d -p 8080:80 --name nginx_test nginx
 >```
 >
+>El primer comando instala el navegador de consola lynx
+>El segundo comando le indica al cliente Docker que ejecute un contenedor del servidor nginx, con los siguientes parametros:
+>1. -d: inidica que la ejecucion va a ser automata, es decir, que no pare de ejecutarse
+>2.  --name: indica el nombre del id del contenedor llamado nginx_test
+>3.  nginx: indica el nombre de la imagen a usar, en este caso, el nombre de la imagen oficial de nginx llamada nginx
+>
 >```c
 >docker ps
 >``` 
