@@ -106,3 +106,45 @@ Nginx is a webserver which stores html, js, images files and use http request to
 ## How to change your localhost by pausanch.42.fr
 1. Go to the file /etc/hosts
 2. Add the following line: "127.0.0.1 pausanch.42.fr"
+
+# Docker-compose
+## Docker-compose commands
+
+```c
+
+- docker-compose up -d --build, //Create and build all the containers and they still run in the background
+- docker-compose ps, //Check the status for all the containers
+- docker-compose logs -f --tail 5, //see the first 5 lines of the logs of your containers
+- docker-compose stop , //stop a stack of your docker compose
+- Docker-compose down, //destroy all your ressources
+- docker-compose config, //check the syntax of you docker-compose file
+
+```
+## Inside the docker-compose file
+All the information aboout what every line means are in this [tutorial](https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211677-creez-un-fichier-docker-compose-pour-orchestrer-vos-conteneurs)
+
+# WordPress
+## Useful links
+- [What is the wordpress CLI](https://www.dreamhost.com/wordpress/guide-to-wp-cli/#:~:text=The%20WP%2DCLI%20is%20a,faster%20using%20the%20WP%2DCLI.)  
+- [Know more about wp-config.php](https://wpformation.com/wp-config-php-et-functions-php-fichiers-wordpress/)  
+- [php-fpm - www.conf](https://myjeeva.com/php-fpm-configuration-101.html)
+
+*definitions*
+*wp-config.php* This file tells to your database how to get your files and how to treat them
+
+## What are the steps to create your Wordpress
+1. **Create you dockerfile image**
+   - Download php-fpm
+   - Copy the [www.conf] file in php/7.4/fpm/pool.d/
+   - Create the php directory to enable php-fpm to run
+   - Copy the script and launch it
+   - Go to the html directory
+   - Launch php-fpm
+2. **Create a script**
+   - Download wordpress
+   - Create the configuration file of wordpress
+   - Move files from wordpress in the html directory
+   - Give the 4th enviromental variables for wordpress
+3. **Create a [www.conf]** You need to edit [www.conf] and place it in /etc/php/7.4(the usual version of php on 42 vm)/fpm/pool.d  and wp-content.php to disable access to the wordpress installation page when you access your sitet at [https://login.42.fr]
+   - Put listen = 0.0.0.0:9000 to listen to all ports
+   - Increase the number for the pm values in order to avoid a 502 page
