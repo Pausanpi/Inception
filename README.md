@@ -62,7 +62,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
  
 # Nginx
 ## How to set up Nginx (our web server)
-- [Video tutorial](<http://nginx.org/en/docs/beginners_guide.html>)
+- [Tutorial](<http://nginx.org/en/docs/beginners_guide.html>)
 Nginx is a webserver which stores html, js, images files and use http request to display a website. Nginx conf documents will be used to config out server and the right proxy connexion.
 
 ## Configure .conf file on nginx
