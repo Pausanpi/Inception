@@ -148,3 +148,42 @@ All the information aboout what every line means are in this [tutorial](https://
 3. **Create a [www.conf]** You need to edit [www.conf] and place it in /etc/php/7.4(the usual version of php on 42 vm)/fpm/pool.d  and wp-content.php to disable access to the wordpress installation page when you access your sitet at [https://login.42.fr]
    - Put listen = 0.0.0.0:9000 to listen to all ports
    - Increase the number for the pm values in order to avoid a 502 page
+
+
+
+
+
+
+
+
+# Para corrección
+
+## Cómo entrar en un contenedor
+Para entrar por ejemplo, de MariaDB, se puede usar el comando ```docker exec``` con una terminal interactiva.
+1. Encuentra el ID o nombre del contenedor de MariaDBÑ
+```c
+docker ps | grep mariadb
+```
+2. Una vez que tengas el ID o nombre, usa el siguiente comando:
+```c
+docker exec -it [ID o nombre del contenedor] bash
+```
+Si conoces directamente el nombre de tu contenedor (por ejemplo, si lo llamaste "mariadb" en tu archivo docker-compose.yml), puedes simplemente usar:
+```c
+docker exec -it mariadb bash
+```
+
+## Entrar a la base de datos
+Para entrar a la base de datos de MariaDB una vez que ya estás dentro del contenedor, puedes usar el cliente de líneae de comandos de MySQL/MariaDB con el siguiente comando:
+```c
+mysql -u root -p
+```
+Esto te pedirá la contraseña del usuario root. Introdúcela cuando te la solicite.
+
+Una vez hayas introducido la contraseña correctamente, entrarás en la consola de MariaDB donde podrás ejecutar comandos SQL. Por ejemplo:
+```c
+SHOW DATABASE;            -- Muestra todas las bases de datos
+USE wordpress;            -- Selecciona la base de datos wordpress
+SHOW TABLES;              -- Muestra todas las tablas de la base de datos actual
+SELECT * FROM wp_users;   -- Muestra todos los usuarios de WordPress
+```
