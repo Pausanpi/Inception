@@ -156,10 +156,10 @@ All the information aboout what every line means are in this [tutorial](https://
 
 
 
-# Para corrección
+# For correction
 
-## Cómo entrar en un contenedor
-Para entrar por ejemplo, de MariaDB, se puede usar el comando ```docker exec``` con una terminal interactiva.
+## How to enter a container
+To enter for example, from MariaDB, you can use the ```docker exec``` command with an interactive terminal.
 1. Encuentra el ID o nombre del contenedor de MariaDBÑ
 ```c
 docker ps | grep mariadb
