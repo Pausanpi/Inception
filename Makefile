@@ -1,16 +1,36 @@
-all: 
-	mkdir -p ~/data
-	mkdir -p ~/data/mariadb ~/data/wordpress
-	docker compose -f srcs/docker-compose.yml build
-	docker compose -f srcs/docker-compose.yml up
+NAME = inception
 
-clean:
-	docker system prune -af
+# Default target (runs 'up')
+all: up
 
-remove:
-	docker stop $$(docker ps -qa); docker rm $$(docker ps -qa); docker rmi $$(docker images -qa); docker volume rm $$(docker volume ls -q); docker network rm $$(docker network ls -q) 2>/dev/null
-	rm -rf ~/data
+# Start containers with proper directory permissions
+up: hosts
+	mkdir -p /home/pausanch/data/mariadb /home/pausanch/data/wordpress
+	chmod -R 755 /home/pausanch/data  # Ensure proper permissions
+	docker compose -f srcs/docker-compose.yml up --build -d
 
-re: remove all
+# Ensure /etc/hosts contains the necessary domain mapping
+hosts:
+	@echo "Checking /etc/hosts for pausanch.42.fr..."
+	@HOST_ENTRY="127.0.0.1	pausanch.42.fr"; \
+	if ! grep -q "$$HOST_ENTRY" /etc/hosts; then \
+		echo "Adding $$HOST_ENTRY to /etc/hosts"; \
+		echo "$$HOST_ENTRY" | sudo tee -a /etc/hosts > /dev/null; \
+	else \
+		echo "$$HOST_ENTRY already exists."; \
+	fi
 
-.PHONY: all clean remove re
+# Stop containers
+down:
+	docker compose -f srcs/docker-compose.yml down
+
+# Full cleanup (containers, images, volumes)
+clean: down
+	docker volume rm -f $$(docker volume ls -q) || true
+	docker system prune -af --volumes
+	sudo rm -rf /home/pausanch/data
+
+# Rebuild from scratch
+re: clean up
+
+.PHONY: all up down clean re hosts
