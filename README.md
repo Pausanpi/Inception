@@ -31,30 +31,30 @@ Todo el stack funciona de manera containerizada y se accede via HTTPS a través 
 
 ```
 refactorizado/
-├── Makefile                    # Comandos de gestión del proyecto
-├── README.md                   # Este archivo
+├── Makefile
+├── README.md 
 └── srcs/
-    ├── docker-compose.yml      # Orchestación de contenedores
-    ├── .env                    # Variables de entorno
+    ├── docker-compose.yml
+    ├── .env
     └── requirements/
         ├── nginx/
-        │   ├── Dockerfile      # Imagen de NGINX
+        │   ├── Dockerfile
         │   ├── conf/
-        │   │   └── nginx.conf  # Configuración del servidor
+        │   │   └── nginx.conf
         │   └── tools/
-        │       └── nginx_start.sh  # Script de inicialización
+        │       └── nginx_start.sh
         ├── wordpress/
-        │   ├── Dockerfile      # Imagen de WordPress
+        │   ├── Dockerfile
         │   ├── conf/
-        │   │   └── www.conf    # Configuración PHP-FPM
+        │   │   └── www.conf
         │   └── tools/
-        │       └── wp.sh       # Script de setup de WordPress
+        │       └── wp.sh
         └── mariadb/
-            ├── Dockerfile      # Imagen de MariaDB
+            ├── Dockerfile
             ├── conf/
-            │   └── my.cnf      # Configuración de la base de datos
+            │   └── my.cnf
             └── tools/
-                └── db.sh       # Script de inicialización de DB
+                └── db.sh
 ```
 
 ## 🚀 Guía de Uso
