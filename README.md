@@ -30,7 +30,7 @@ Todo el stack funciona de manera containerizada y se accede via HTTPS a través 
 ## 📁 Estructura del Proyecto
 
 ```
-refactorizado/
+inception/
 ├── Makefile
 ├── README.md 
 └── srcs/
@@ -67,7 +67,7 @@ refactorizado/
 
 1. **Clonar y posicionarse en el directorio:**
    ```bash
-   cd refactorizado/
+   cd inception/
    ```
 
 2. **Levantar toda la infraestructura:**
